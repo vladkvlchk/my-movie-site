@@ -1,10 +1,14 @@
 <template>
   <div class="card">
     <img
+      v-if="movie.poster_path"
       class="card__picture"
       :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"
       alt="Movie Poster"
     />
+    <div v-else class="card__picture">
+      {{ `[no image]` }}
+    </div>
     <div class="card__about">
       <div>
         <h2>{{ movie.title }}</h2>
@@ -65,8 +69,13 @@ export default defineComponent({
   width: 100%;
   max-width: 300px;
   height: fit-content;
+  min-height: 300px;
   border-radius: 8px;
   margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: aliceblue;
 }
 
 .card__about {
